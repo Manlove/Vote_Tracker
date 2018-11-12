@@ -8,7 +8,7 @@ from datetime import date, timedelta
 class scraper():
     dates = {"Jan.":1, "Feb.":2, "March":3, "April":4, "May":5, "June":6, "July":7, "Aug":8, "Sept.":9, "Oct.":10, "Nov.":11, "Dec.":12}
     def __init__(self):
-        self.url = 'https://votesmart.org/candidate/key-votes/65443/tim-walz#.W-OqxdVKjIU'
+        self.url = 'https://votesmart.org/candidate/key-votes/65443'#/tim-walz#.W-OqxdVKjIU'
         self.today = date.today()
         self.getPage()
         self.parse(self.soup)
@@ -28,7 +28,7 @@ class scraper():
                 vote_date = table[0].split(" ")
                 vote_date = date(int(vote_date[2]), self.dates[vote_date[0]], int(vote_date[1][:-1]))
                 if vote_date >= self.today - timedelta(60):
-                    print("{}\n\t{}\n\t{} - {}".format(vote_date, tale[2], table[4], table[3]))
+                    print("{}\n\t{}\n\t{} - {}".format(vote_date, table[2], table[4], table[3]))
 
                 else:
                     break
